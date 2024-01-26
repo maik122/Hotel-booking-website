@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+<title>home</title>
+<head>
+  <title>Index</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="../static/css/style.css" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-Family: Verdana, sans-serif;
+    }
+
+    .mySlides {
+      display: none;
+    }
+
+    img {
+      vertical-align: middle;
+      
+    }
+
+    /* Slideshow container */
+    .slideshow-container {
+      max-width: 50%;
+      position: relative;
+      margin: auto;
+      size-adjust: 100%;
+    }
+
+    /* Caption text */
+    .text {
+      color: #f2f2f2;
+      font-size: 11px;
+      padding: 8px 12px;
+      position: absolute;
+      bottom: 8px;
+      width: 100%;
+      text-align: center;
+    }
+
+    /* Number text  */
+    .number {
+      color: #f2f2f2;
+      font-size: 12px;
+      padding: 8px 12px;
+      position: absolute;
+      top: 0;
+    }
+
+    /* The dots/bullets/indicators */
+    .dot {
+      height: 15px;
+      width: 15px;
+      margin: 0 2px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.6s ease;
+    }
+
+    .active {
+      background-color: #717171;
+    }
+
+    /* Fading animation */
+    .fade {
+      animation-name: fade;
+      animation-duration: 0.5s;
+    }
+
+    @keyframes fade {
+      from {
+        opacity: .4
+      }
+
+      to {
+        opacity: 1
+      }
+    }
+
+    /* On smaller screens, decrease text size */
+    @media only screen and (max-width: 300px) {
+      .text {
+        font-size: 8px
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <a href="/home" style="color:white;">
+      <h1>Horizon hotels.com</h1>
+    </a>
+
+    {% if not current_user.is_authenticated %}
+    <form method="POST" action="/login">
+      <label for="email"><b>Email:</b></label>
+      <input type="text" placeholder="Enter Email" name="email" id="email" required>
+
+      <label for="password1"><b>Password:</b></label>
+      <input type="password" placeholder="Enter Password" name="password1" id="password1" required>
+
+      <button type="submit">sign in</button>
+    </form>
+    {% endif %}
+    {% if current_user.is_authenticated %}
+    <a href="/profile" style="color: white;">Profile</a>
+    <form method="POST" action="/logout">
+    <button type="submit" style="background-color: white;">logout</button>
+    </form>
+    {% endif %}
+    
+
+
+  </header>
+  <div class="slideshow-container">
+
+    <div class="mySlides">
+      <div class="number">1 / 15</div>
+      <img src="../static/images/city images/Belfast/belfast1.jpg" style="width:100% ">
+      <div class="text">
+        Horizon Hotel Belfast
+        <br>
+        Standard room : 130 £
+        <br>
+        Double room : 156 £
+        <br>
+        Family room : 196 £
+
+      </div>
+
+    </div>
+
+    <div class="mySlides">
+      <div class="number">2 / 15</div>
+      <img src="../static/images/city images/Birmingham/birmingham1.jpg" style="width:100%">
+      <div class="text">
+        Horizon Hotel Birmingham
+        <br>
+        Standard room : 150 £
+        <br>
+        Double room : 180 £
+        <br>
+        Family room :225  £
+      </div>
+    </div>
+
+    <div class="mySlides">
+      <div class="number">3 / 15</div>
+      <img src="../static/images/city images/Bristol/bristol1.jpg" style="width:100%">
+      <div class="text">
+      Horizon Hotel Bristol
+      <br>
+      Standard room : 140 £
+      <br>
+      Double room :168 £
+      <br>
+      Family room :  210 £
+    </div>
+    </div>
+
+    <div class="mySlides">
+      <div class="number">4 / 15</div>
+      <img src="../static/images/city images/Cardiff/cardiff3.jpg" style="width:100%">
+      <div class="text">
+        Horizon Hotel Cardiff
+        <br>
+        Standard room : 120 £
+        <br>
+        Double room : 144 £
+        <br>
+        Family room : 180 £
+      </div>
+    </div>
+
+    <div class="mySlides">
+      <div class="number">5 / 15</div>
+      <img src="../static/images/city images/Edinburgh/edinburgh1.jpg" style="width:100%">
+      <div class="text">
+        Horizon Hotel Edinburgh
+        <br>
+        Standard room : 160 £
+        <br>
+        Double room : 192 £
+        <br>
+        Family room : 240 £
+      </div>
+    </div>
+
+    <div class="mySlides">
+      <div class="number">6 / 15</div>
+      <img src="../static/images/city images/glasgow/glasgow1.jpg" style="width:100%">
+      <div class="text">
+        Horizon Hotel Glasgow
+        <br>
+        Standard room : 150 £
+        <br>
+        Double room : 180 £
+        <br>
+        Family room :  225 £
+      </div>
+    </div>
+
+    <div class="mySlides">
+      <div class="number">7 / 15</div>
+      <img src="../static/images/city images/London/london2.jpg" style="width:100%" alt="London">
+      <div class="text">
+        Horizon Hotel London
+        <br>
+        Standard room : 200 £
+        <br>
+        Double room : 240 £
+        <br>
+        Family room : 300 £
+      </div>
+    </div>
+
+    <div class="mySlides">
+      <div class="number">8 / 15</div>
+      <img src="../static/images/city images/Manchester/manchester1.jpg" style="width:100%" alt="Manchester">
+      <div class="text">
+        Horizon Hotel Manchester
+        <br>
+        Standard room : 180 £
+        <br>
+        Double room : 216 £
+        <br>
+        Family room : 270 £
+      </div>
+    </div>
+
+    <div class="mySlides">
+      <div class="number">9 / 15</div>
+      <img src="../static/images/city images/new castle/newcastle.jpg" style="width:100%" alt="Newcastle">
+      <div class="text">
+        Horizon Hotel Newcastle
+        <br>
+        Standard room : 100 £
+        <br>
+        Double room : 120 £
+        <br>
+        Family room : 150 £
+      </div>
+    </div>
+
+    <div class="mySlides">
+      <div class="number">10 / 15</div>
+      <img src="../static/images/city images/Norwich/norwich.jpg" style="width:100%" alt="Norwich">
+      <div class="text">
+        Horizon Hotel Norwich
+        <br>
+        Standard room : 100 £
+        <br>
+        Double room : 120 £
+        <br> 
+        Family room : 150 £
+      </div>
+    </div>
+
+    <div class="mySlides">
+      <div class="number">11 / 15</div>
+      <img src="../static/images/city images/Nottingham/nottingham.jpg" style="width:100%" alt="Nottingham">
+      <div class="text">
+        Horizon Hotel Nottingham
+        <br>
+        Standard room : 120 £
+        <br>
+        Double room : 144 £
+        <br>
+        Family room : 180 £
+      </div>
+    </div>
+
+    <div class="mySlides">
+      <div class="number">12 / 15</div>
+      <img src="../static/images/city images/oxford/oxford.jpg" style="width:100%" alt="Oxford">
+      <div class="text">
+        Horizon Hotel Oxford
+        <br>
+        Standard room : 180 £
+        <br>
+        Double room : 216 £
+        <br>
+        Family room : 270 £
+      </div>
+    </div>
+
+    <div class="mySlides">
+      <div class="number">13 / 15</div>
+      <img src="../static/images/city images/Plymouth/plymouth.jpg" style="width:100%" alt="Plymouth">
+      <div class="text">
+        Horizon Hotel Plymouth
+        <br>
+        Standard room : 180 £
+        <br>
+        Double room : 216 £
+        <br>
+        Family room : 270 £
+      </div>
+    </div>
+
+    <div class="mySlides">
+      <div class="number">14 / 15</div>
+      <img src="../static/images/city images/Swansea/swansea.jpg" style="width:100%"  alt="Swansea">
+      <div class="text">
+        Horizon Hotel Swanswea
+        <br>
+        Standard room : 120 £
+        <br>
+        Double room : 144 £
+        <br>
+        Family room : 180 £
+      </div>
+    </div>
+
+    <div class="mySlides">
+      <div class="number">15 / 15</div>
+      <img src="../static/images/city images/Aberdeen/Aberdeen2.jpg" style="width:100%" alt="Aberdeen">
+      <div class="text">
+        Horizon Hotel Aberdeen
+        <br>
+        Standard room : 140 £
+        <br>
+        Double room : 168 £
+        <br>
+        Family room : 210 £
+      </div>
+    </div>
+
+  </div>
+  <br>
+
+  <div style="text-align:center">
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <br>
+    {%if current_user.is_authenticated%}
+    <a href="/paymentpage"> <button style="width:400px;">Book</button> </a>
+    {%else%}
+    <h3></h3>
+    {%endif%}
+    <br><br><br>
+  </div>
+
+  <script>
+    let slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+      let i;
+      let slides = document.getElementsByClassName("mySlides");
+      let dots = document.getElementsByClassName("dot");
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) { slideIndex = 1 }
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex - 1].style.display = "block";
+      dots[slideIndex - 1].className += " active";
+      setTimeout(showSlides, 3000); // Change image every 3 seconds
+    }
+  </script>
+
+
+  <div class="col-3 col-m-12 col-x-12">
+    <div class="aside">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d4966.474110019265!2d-2.557258731875609!3d51.50886681234109!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2suk!4v1642087992968!5m2!1sen!2suk"
+        width="100%" style="height: 400%;" allowfullscreen="" loading="lazy"></iframe>
+
+    </div>
+  </div>
+  {% if not current_user.is_authenticated %}
+  <footer>
+    <div class="bottom-container">
+      <div class="row">
+        <div class="col">
+          <a href="/signup" style="color:white" class="btn">Sign up for latest deals</a>
+        </div>
+      </div>
+      <small>&copy; Copyright 2022, Horizon hotels</small>
+
+    </div>
+    
+  </footer>
+  {% endif %}
+</body>
+
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="../static/css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Payment</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #f2f2f2;
+    }
+
+    /* Style the header */
+    header {
+      padding: 30px;
+      text-align: center;
+      color: white;
+      background-color: rgb(97, 134, 88);
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .row {
+      display: -ms-flexbox;
+      /* IE10 */
+      display: flex;
+      -ms-flex-wrap: wrap;
+      /* IE10 */
+      flex-wrap: wrap;
+      margin: 0 -16px;
+    }
+
+    .col-25 {
+      -ms-flex: 25%;
+      /* IE10 */
+      flex: 25%;
+    }
+
+    .col-50 {
+      -ms-flex: 50%;
+      /* IE10 */
+      flex: 50%;
+    }
+
+    .col-75 {
+      -ms-flex: 75%;
+      /* IE10 */
+      flex: 75%;
+    }
+
+    .col-25,
+    .col-50,
+    .col-75 {
+      padding: 0 16px;
+    }
+
+    .container {
+      background-color: #f2f2f2;
+      padding: 5px 20px 15px 20px;
+      border: 1px solid lightgrey;
+      border-radius: 3px;
+    }
+
+    input[type=text] {
+      width: 100%;
+      padding: 15px;
+      margin: 5px 0 22px 0;
+      display: inline-block;
+      border: none;
+      background: #f1f1f1;
+    }
+
+    label {
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .icon-container {
+      margin-bottom: 20px;
+      padding: 7px 0;
+      font-size: 24px;
+    }
+
+
+    .btn {
+      background-color: #666;
+      color: white;
+      padding: 16px 20px;
+      margin: 8px 0;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      opacity: 0.9;
+      border-radius: 10px;
+      font-size: 17px;
+
+    }
+
+    .btn:hover {
+      opacity: 1;
+    }
+
+    a {
+      color: #2196F3;
+    }
+
+    hr {
+      border: 1px solid lightgrey;
+    }
+
+    span.price {
+      float: right;
+      color: grey;
+    }
+
+    /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
+    @media (max-width: 800px) {
+      .row {
+        flex-direction: column-reverse;
+      }
+
+      .col-25 {
+        margin-bottom: 20px;
+      }
+
+    }
+  </style>
+
+</head>
+
+<body>
+  <header>
+    <a href="/home" style="color:white;">
+      <h1>Horizon hotels.com</h1>
+    </a>
+  </header>
+  <h1>Payment and Booking Details </h1>
+  <hr>
+
+  <div class="row">
+    <div class="col-75">
+      <form id="bookingForm" method="POST">
+        <div class="container">
+          <div class="row">
+            <div class="col-50">
+              <h3> Booking details</h3>
+              <label for="checkin"> Date of check in</label>
+              <input type="date" id="checkin" name="checkin" required>
+              <br><br>
+              <label for="checkout"> Date of check out</label>
+              <input type="date" id="checkout" name="checkout" required>
+              <br><br>
+              <div class="row">
+                <div class="col-50">
+                  <label for="guestamount" id="guest" name="guestamount">Number of guests</label>
+                  <input type="number" id="guestamount" name="guestamount" style="width:10%" min="1" max="6" required>
+                  <br><br>
+                  <label>City</label>
+                  <select id="city" name="city">
+                    <option value="Aberdeen">Aberdeen</option>
+                    <option value="Belfast">Belfast</option>
+                    <option value="Birmingham">Birmingham</option>
+                    <option value="Bristol">Bristol</option>
+                    <option value="Cardiff">Cardiff</option>
+                    <option value="Edinburgh">Edinburgh</option>
+                    <option value="Glasgow">Glasgow</option>
+                    <option value="London">London</option>
+                    <option value="Manchester">Manchester</option>
+                    <option value="Norwich">Norwich</option>
+                    <option value="Nottingham">Nottingham</option>
+                    <option value="Oxford">Oxford</option>
+                    <option value="Plymouth">Plymouth</option>
+                    <option value="Swansea">Swansea</option>
+                  </select>
+
+                </div>
+
+              </div>
+            </div>
+
+            <div class="col-50">
+              <h3>Payment</h3>
+              <select id="currency" name="currency">
+                <option value="1" title="GBP">GBP - £</option>
+                <option value="2" title="Euro">EUR - €</option>
+                <option value="3" title="United states dollar">USD - $</option>
+              </select>
+              
+              <a href="#"><button style="color: blue;background-color: gold; border-radius:1px;"   disabled> Paypal </button> </a>
+
+              <input type="submit" value="Book " class="btn">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-25">
+          <div class="container">
+            <!--assumes  base rate is british  pounds-->
+            <h3 id="totalh3">Total for stay
+              <span class="price" style="color:black"><b> <span id="symbol">£</span><span id="total"></span></b></span>
+            </h3>
+            <hr>
+            <p>
+            <!--changes  room type according to  amount of guests-->
+              Room type
+            <span id="room" class="room">
+              <b>
+
+              </b>
+              </span>
+            </p>
+            <p>Total taxes <span> &emsp; Included in price</span></p>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- jquery cdn -->
+  <script src="https://code.jquery.com/jquery-3.6.0.js" crossorigin="anonymous"></script>
+  <script>
+
+    async function get(checkin, checkout, city, guestamount) {
+      const resp = await fetch('/api/costs', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          checkin: checkin,
+          checkout: checkout,
+          city: city,
+          guestamount: guestamount,
+          currency: $("#currency").val()
+        })
+      })
+      return resp.json();
+    }
+
+    $("#bookingForm").on('change', function () {
+      console.log($("#currency").val());
+      get($("#checkin").val(), $("#checkout").val(), $("#city").val(), $("#guestamount").val())
+        .then(data => {
+          console.log(data)
+          $("#total").html(data);
+        })
+    });
+
+    $("#currency").on('change', function () {
+      if ($("#currency").val() == "2") {
+        $("#symbol").html("€");
+      }
+      else if ($("#currency").val() == "3") {
+        $("#symbol").html("$");
+      }
+      else {
+        $("#symbol").html("£");
+      }
+    });
+
+
+    $("#guestamount").on('change', function () {
+      if ($("#guestamount").val() == 1) {
+        $("#room").html("  <span class='room'>  &emsp; Single room</span>");
+      } else if ($("#guestamount").val() == 2) {
+        $("#room").html("  <span class='room'> &emsp;  Double room</span>");
+      } else if ($("#guestamount").val() > 2) {
+        $("#room").html("  <span class='room'> &emsp; Family room</span>");
+      }
+    });
+  </script>
+</body>
+
+</html>
